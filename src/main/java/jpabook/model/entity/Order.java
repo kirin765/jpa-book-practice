@@ -24,6 +24,10 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;     //주문시간
 
@@ -43,8 +47,21 @@ public class Order {
         orderItem.setOrder(this);
     }
 
+    public void setDelivery(Delivery delivery){
+//        if(delivery != null && delivery.getOrder() != null){
+//            delivery.getOrder().setDelivery(null);
+//        }
+
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
+
     public Member getMember() {
         return member;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
     }
 
     public List<OrderItem> getOrderItems() {
