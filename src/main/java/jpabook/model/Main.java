@@ -37,11 +37,5 @@ public class Main {
     }
 
     public static void logic(EntityManager em){
-        Member member = new Member();
-        member.setCity("seoul");
-        member.setName("member1");
-        member.setZipcode("1234");
-
-        em.persist(member);
     }
 }
